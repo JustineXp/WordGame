@@ -4,6 +4,7 @@ import random
 import time
 
 pattern = re.compile("[a-zA-Z]{5}")
+nums_pattern = re.compile("[0-9]{3}")
 number_of_times = 1
 
 
@@ -13,7 +14,7 @@ def shuffled():
         word_list.append(_.upper())
         random.shuffle(word_list)
 
-    shuffled_letters = ' '.join(word_list)
+    shuffled_letters = '-'.join(word_list)
     return shuffled_letters
 
 
@@ -31,8 +32,8 @@ def show_answer():
     print(f"CORRET ANSWER : {random_word.upper()}")
 
 
-def fetch_input():
-    return str(input(f'GUESS A 5 LETTER WORD CONSISTING OF THE LETTERS [ {shuffled_letters} ] : ').strip()).lower()
+def fetch_input(user_string):
+    return input(f'{user_string}[ {shuffled_letters} ] : ').strip().lower()
 
 
 def fetch_confirmation():
@@ -44,7 +45,7 @@ shuffled_letters = shuffled()
 
 
 while True:
-    user_word = fetch_input()
+    user_word = fetch_input('GUESS A 5 LETTER WORD CONSISTING OF THE LETTERS ')
     if bool(re.search("[^a-zA-Z]", user_word)):
         print('USE ONLY LETTERS IN YOUR WORD . . .')
     elif bool(pattern.search(user_word)):

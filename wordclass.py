@@ -11,7 +11,7 @@ class Word:
         self.allwords()
 
     def __repr__(self):
-        print(self.random_word)
+        return self.random_word
 
     def random_word_generator(self):
         random_word = random.choice(words)
